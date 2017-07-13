@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		#trag{height: 200px;width: 200px;background: #0062CC;position: absolute;}
+		#trag2{height: 200px;width: 200px;background: #0062CC;position: absolute;}
+	</style>
+	<body>
+		<div id="box">
+			<p id="trag" v-move v-bac></p>
+			<p id="trag2" v-move></p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		 Vue.directive('bac',function(el){
+			el.style.background='red'
+		})
+		var vm=new Vue({
+			el:'#box',
+			s
+			directives:{
+				'move':function(el,binding){
+						el.onmousedown=function(e){
+							var event=e||event;
+							var x=e.clientX-el.offsetLeft
+							var y=e.clientY-el.offsetTop
+							document.onmousemove=function(e){
+								var e=e||event;
+								el.style.left=e.clientX-x+'px';
+								el.style.top=e.clientY-y+'px';
+								
+						}
+							document.onmouseup=function(){		
+								document.onmousemove=''
+							}
+							}
+
+						
+				}
+			}
+		})
+	</script>
+</html>
